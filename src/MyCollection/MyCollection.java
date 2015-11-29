@@ -13,7 +13,7 @@ public class MyCollection {
 
     public void allToString() {
         for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i].getValue());
+            System.out.println("Cell: "+i+" data: "+data[i].getValue());
         }
     }
 
@@ -29,9 +29,9 @@ public class MyCollection {
     public void addAll(MyCollection newcollections) {
         int dataArrayId = data.length;
         int dataNewLength = newcollections.size() + data.length;
-        data = new MyObject[dataNewLength];
+        dataArrayChangeLength(dataNewLength);
         for (MyObject newobject : newcollections.data) {
-            System.out.println("Putting "+newobject.toString()+" in data cell"+dataArrayId);
+//            System.out.println("Putting "+newobject.toString()+" in data cell"+dataArrayId);
             data[dataArrayId] = new MyObject(newobject);
             dataArrayId++;
         }
@@ -62,7 +62,7 @@ public class MyCollection {
 
     public void remove(Object object) {
         for (int i = 0; i < data.length; i++) {
-            if (data[i] == object) {
+            if (object.toString() == (data[i].toString())) {
                 data[i] = null;
             }
             ;
@@ -84,7 +84,7 @@ public class MyCollection {
 
     public boolean contains(Object object) {
         for (int i = 0; i < data.length; i++) {
-            if (object.equals(data[i].getValue())) return true;
+            if (object.equals(data[i].toString())) return true;
         }
         return false;
     }
@@ -123,7 +123,7 @@ public class MyCollection {
         int coincidenceNumber = 0;
         for (int i = 0; i < data.length; i++) {
             for (MyObject searchableObject : collection.data) {
-                if (searchableObject.getValue() == data[i].getValue()) coincidenceNumber++;
+                if (searchableObject.toString() == data[i].toString()) coincidenceNumber++;
             }
         }
         if (coincidenceNumber == collection.size()) return true;

@@ -11,7 +11,7 @@ public class MyObject {
     }
 
     public Object getValue() {
-        return this.VALUE;
+        return VALUE;
     }
 
     public String toString(){
